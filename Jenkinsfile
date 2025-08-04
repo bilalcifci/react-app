@@ -7,6 +7,12 @@ pipeline {
 
     stages {
         stage('Build React App') {
+            agent {
+                docker {
+                    image 'node'
+                    reuseNode true
+                }
+            }
             steps {
                 sh 'npm install'
                 sh 'npm run build'
